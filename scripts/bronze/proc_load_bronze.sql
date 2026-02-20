@@ -29,7 +29,7 @@ BEGIN
         PRINT '-------------------------------------';
         PRINT 'Loading CRM Tables';
         PRINT '-------------------------------------';
-    --Bulk Insert for bronze.crm_cust_info (PROCEDURE)
+        --Bulk Insert for bronze.crm_cust_info (PROCEDURE)
         SET @start_time = GETDATE();
         PRINT '>> Truncating Table: bronze.crm_cust_info';
         TRUNCATE TABLE bronze.crm_cust_info;
@@ -133,13 +133,13 @@ BEGIN
         PRINT 'Loading of Bronze Layer is Complete';
         PRINT ' -Total Load Duration: ' + CAST(DATEDIFF(second, @batch_start_time, @batch_end_time) AS NVARCHAR) + ' seconds';
         PRINT '========================================';
-    END TRY
-    BEGIN CATCH
+  END TRY
+  BEGIN CATCH
     PRINT '==============================================';
     PRINT 'ERROR OCCURED DURING LOADING BRONZE LAYER';
     PRINT 'Error Message' + ERROR_Message();
     PRINT 'Error Message' + CAST(ERROR_NUMBER() AS NVARCHAR);
     PRINT 'Error Message' + CAST(ERROR_STATE() AS NVARCHAR);
     PRINT '==============================================';
-    END CATCH
+  END CATCH
 END
